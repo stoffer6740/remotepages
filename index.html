@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Test</title>
+	<script src="phonegap.js"></script>
+</head>
+<script type="text/javascript">
+	/**
+ * Load page into url
+ *
+ * @param url           The url to load
+ */
+	function loadPage(url) {
+	    var xmlhttp = new XMLHttpRequest();
+
+	    // Callback function when XMLHttpRequest is ready
+	    xmlhttp.onreadystatechange=function(){
+	        if (xmlhttp.readyState === 4){
+	            if (xmlhttp.status === 200) {
+	                document.getElementById('container').innerHTML = xmlhttp.responseText;
+	            }
+	        }
+	    };
+	    xmlhttp.open("GET", url , true);
+	    xmlhttp.send();
+	}
+
+	/**
+	 * Function called when page has finished loading.
+	 */
+	function init() {
+
+	    // Load first page into container
+	    loadPage("http://exam.c-bjerregaard.dk");
+	}
+</script>
+  </head>
+<body id="body" onload="init();">
+    <h3 id="header">PhoneGap Dynamic Pages Demo</h3>
+    <div id='container'></div>
+</body>
+</html>
